@@ -22,7 +22,7 @@
             <input type="text" id="uString" />
         </fieldset>
         <fieldset class="button">
-            <button type="button" id="convert">Convert String</button>
+            <button type="button" id="convert" onclick="titleCase(str)">Convert String</button>
         </fieldset>
         <fieldset>
             <p>Title Case Conversion</p>
@@ -30,5 +30,37 @@
         </fieldset>
     </form>
 </article>
+<script>
+    var str = document.getElementById("uString");
+    function titleCase(str) {
+        var words = str.toLowerCase().split(' ');
+
+        for(var i = 0; i < words.length; i++) {
+            var letters = words[i].split('');
+            letters[0] = letters[0].toUpperCase();
+            words[i] = letters.join('');
+        }
+        return words.join(' ');
+       /* document.getElementById("pString").innerHTML = "";*/
+    }
+    alert (titleCase("I'm a little tea pot"));
+    // add event listener to button
+    function createEventListener() {
+        var submitButton = document.getElementById("convert");
+        if (submitButton.addEventListener) {
+            submitButton.addEventListener("click", titleCase, false);
+        } else if (submitButton.attachEvent) {
+            submitButton.attachEvent("onclick", titleCase);
+        }
+
+        // clear on reload
+        /*document.getElementById("uString").innerHTML = "";*/
+    }
+    if (window.addEventListener) {
+        window.addEventListener("load", createEventListener, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onload", createEventListener);
+    }
+</script>
 </body>
 </html>
