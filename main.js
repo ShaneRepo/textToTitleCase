@@ -1,7 +1,6 @@
-document.getElementById("submit").addEventListener("click", titleCase, false);
-document.getElementById("result").value = titleCase();
 function titleCase() {
-    var str = document.getElementById("uString").value;
+    var str = document.getElementById("userString").value;
+    var answer = document.getElementById("userResult");
     var arrayOfStrings = str.split(" ");
     for(var i = 0; i < arrayOfStrings.length; i++){
         var placeholder = arrayOfStrings[i];
@@ -10,8 +9,14 @@ function titleCase() {
         arrayOfStrings[i] = upLetter.concat(placeholder);
     }
     str = arrayOfStrings.join(' ');
+    console.log(str);
+    /*answer.value = str.toString();*/
+    document.getElementById("userResult").value = str;
     return str;
-    
+    /*return document.getElementById("result").value = str;*/
 }
+document.getElementById("submit").addEventListener("click", titleCase, false);
+
+
 
 
